@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from "../Elements/Logo";
+import { Link } from "react-router-dom";
 // import FormSignIn from "../Fragments/FormSignIn";
 
 const AuthLayout = (props) => {
@@ -98,15 +99,15 @@ const AuthLayout = (props) => {
               <span className="text-sm text-gray-03">
                 Already have an account?&nbsp;
               </span>
-              <a href="/login" className="text-primary text-sm font-bold">
+              <Link to="/login" className="text-primary text-sm font-bold">
                 Sign In Here
-              </a>
+              </Link>
             </>
           ) : (
             <>
-              <a href="/register" className="text-primary text-sm font-bold">
+              <Link to="/register" className="text-primary text-sm font-bold">
                 Create an account
-              </a>
+              </Link>
               
             </>
           )}
