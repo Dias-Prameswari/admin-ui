@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
@@ -6,7 +6,7 @@ import ForgotPassword from "./components/Fragments/ForgotPassword";
 import ErrorRouter from "./pages/errorRouter";
 
 const App = () => {
-  const myRouter= createBrowserRouter([
+  const myRouter = createBrowserRouter([
     {
       path: "/",
       element: <div>Halaman Utama</div>,
@@ -21,17 +21,12 @@ const App = () => {
       element: <SignUpPage />,
     },
     {
-      path: "/forgot-password", // Tambahkan route untuk forgot password
+      path: "/forgot-password",
       element: <ForgotPassword />,
     },
   ]);
   
-  return (
-    <>
-      <RouterProvider router={myRouter} />
-    </>
-    
-);//tutup return
-};//tutup const
+  return <RouterProvider router={myRouter} />;
+};
 
 export default App;

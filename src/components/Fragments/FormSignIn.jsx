@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";
 import Button from "../Elements/Button";
@@ -24,15 +24,21 @@ const FormSignIn = () => {
              />
             </div>
 
-            
-
-            <div className="mb-3">
+            <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center space-x-2"> 
+              {/* Flex untuk checkbox dan teks */}
               <CheckBox 
-              label="Keep me signed in"
-              name="status"
+                label="Keep me signed in"
+                name="status"
               />
             </div>
             
+            <a href="/forgot-password" className="text-primary text-sm font-semibold hover:underline">
+              Forgot Password?
+            </a>
+          </div>
+
+
             <Button
             variant="bg-primary w-full text-white"
             type="submit">

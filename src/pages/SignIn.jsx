@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import FormSignIn from "../components/Fragments/FormSignIn";
 import AuthLayout from "../components/Layouts/AuthLayout";
 

@@ -1,7 +1,7 @@
-import React from 'react'
-import Logo from '../Elements/Logo';
-import Button from '../Elements/Button';
-import LabeledInput from '../Elements/LabeledInput';
+import React from 'react';
+import Logo from "../Elements/Logo";
+import Button from "../Elements/Button";
+import LabeledInput from "../Elements/LabeledInput";
 import { Link } from "react-router-dom";
 
 const ForgotPassword = () => {
@@ -22,15 +22,19 @@ const ForgotPassword = () => {
         </div>
 
         {/* input field */}
-        <LabeledInput
+        <div className="mb-6">
+             <LabeledInput
              label="Email address"
              type="email"
              placeholder="hello@example.com"
              name="email"
-        />
+             />
+            </div>
 
         {/* reset button */}
-        <Button>
+        <Button 
+        variant="bg-primary w-full text-white"
+        type="submit"> 
             Password Reset
         </Button>
 

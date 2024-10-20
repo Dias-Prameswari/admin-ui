@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Button = (props) => {
     const { children, variant, type } = props;
     return(

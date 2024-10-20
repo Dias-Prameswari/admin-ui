@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Logo from "../Elements/Logo";
 // import FormSignIn from "../Fragments/FormSignIn";
 
@@ -92,28 +92,26 @@ const AuthLayout = (props) => {
         {/* sign in with google end */}
 
         {/* link start */}
-<div className="flex justify-center">
-  {type === "sign up" ? (
-    <>
-      <span className="text-sm text-gray-03">
-        Already have an account?&nbsp;
-      </span>
-      <a href="/login" className="text-primary text-sm font-bold">
-        Sign In Here
-      </a>
-    </>
-  ) : (
-    <>
-      <a href="/register" className="text-primary text-sm font-bold">
-        Create an account
-      </a>
-      <a href="/forgot-password" className="text-primary text-sm font-bold" style={{ marginLeft: "10px" }}>
-        Forgot Password?
-      </a>
-    </>
-  )}
-</div>
-{/* link end */}
+        <div className="flex justify-center">
+          {type === "sign up" ? (
+            <>
+              <span className="text-sm text-gray-03">
+                Already have an account?&nbsp;
+              </span>
+              <a href="/login" className="text-primary text-sm font-bold">
+                Sign In Here
+              </a>
+            </>
+          ) : (
+            <>
+              <a href="/register" className="text-primary text-sm font-bold">
+                Create an account
+              </a>
+              
+            </>
+          )}
+        </div>
+        {/* link end */}
 
 
       </div>
