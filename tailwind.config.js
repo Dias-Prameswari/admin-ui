@@ -29,7 +29,11 @@ export default {
       fontFamily:{
         body: ['Inter'],
         poppins: ['Poppins'],
-      }
+      },
+      // googlelogo:{
+      //   width:"24px" , // Atur ukuran width sesuai kebutuhan
+      //   height:"24px",
+      // },
     } //tutup extends
   },//tutup theme
   plugins: [],

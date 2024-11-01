@@ -5,31 +5,34 @@ import SignUpPage from "./pages/SignUp";
 import ForgotPassword from "./components/Fragments/ForgotPassword";
 import ErrorRouter from "./pages/errorRouter";
 import { useState, useEffect } from 'react';
+import Dashboard from "./pages/Dashboard";
+import Balance from './pages/Balance';
 
-// Komponen ProtectedRoute
-const ProtectedRoute = ({ element }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Komponen ProtectedRoute
+  // const ProtectedRoute = ({ element }) => {
+  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Simulasi pengecekan login, bisa diganti dengan pengecekan sesungguhnya dari localStorage atau cookie
-  useEffect(() => {
-    const loggedIn = localStorage.getItem("isLoggedIn");
-    setIsLoggedIn(loggedIn);
-  }, []);
+  //   // Simulasi pengecekan login, bisa diganti dengan pengecekan sesungguhnya dari localStorage atau cookie
+  //   useEffect(() => {
+  //     const loggedIn = localStorage.getItem("isLoggedIn");
+  //     setIsLoggedIn(loggedIn);
+  //   }, []);
 
-  // Jika belum login, arahkan ke halaman login
-  if (!isLoggedIn) {
-    return <Navigate to="/login" />;
-  }
+  //   // Jika belum login, arahkan ke halaman login
+  //   if (!isLoggedIn) {
+  //     return <Navigate to="/login" />;
+  //   }
 
-  // Jika sudah login, tampilkan elemen yang dilindungi
-  return element;
-};
+  //   // Jika sudah login, tampilkan elemen yang dilindungi
+  //   return element;
+  // };
 
 const App = () => {
   const myRouter = createBrowserRouter([
     {
       path: "/",
-      element: <ProtectedRoute element={<div>Halaman Utama</div>} />,
+      // element: <ProtectedRoute element={<Dashboard />} />,
+      element: <Dashboard />,
       errorElement: <ErrorRouter />,
     },
     {
@@ -43,6 +46,10 @@ const App = () => {
     {
       path: "/forgot-password",
       element: <ForgotPassword />,
+    },
+    {
+      path: "/balance",
+      element: <Balance />,
     },
   ]);
 

@@ -23,32 +23,32 @@ const AuthLayout = (props) => {
         {/* teks start */}
         <div className="my-9 px-7 flex justify-center text-xs text-gray-03 items-center flex-col static">
           <div className="border border-gray-05 w-full"></div>
-          <div class="px-2 bg-special-mainBg absolute"> or Sign in with</div>
+          <div className="px-2 bg-special-mainBg absolute"> or Sign in with</div>
         </div>
         {/* teks end */}
 
         {/* sign in with google start */}
         <div className="mb-8">
-          <button className="h-12 flex items-center justify-center rounded-md text-sm w-full bg-gray-05 text-gray-01"
+          <button 
+          className="h-12 flex items-center justify-center rounded-md text-sm w-full bg-gray-05 text-gray-01 gap-2"
           type="button">
-            <svg
-              class="h-6 w-6 mr-2"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="800px"
-              height="800px"
-              viewBox="-0.5 0 48 48"
-              version="1.1"
+            <svg 
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            width="20" // pastikan ukuran sesuai
+            height="20"
+            viewBox="0 0 48 48"
             >
               {" "}
-              <title>Google-color</title> <desc>Created with Sketch.</desc>{" "}
+              <title>Google-color</title> 
+              <desc>Created with Sketch.</desc>{" "}
               <defs> </defs>{" "}
               <g
                 id="Icons"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 {" "}
                 <g id="Color-" transform="translate(-401.000000, -860.000000)">
