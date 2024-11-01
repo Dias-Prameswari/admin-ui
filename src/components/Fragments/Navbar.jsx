@@ -100,7 +100,7 @@ const Navbar = () => {
         <div className="border-b my-10 border-b-special-bg"></div>
         <div className="flex justify-between">
           <div className="mx-auto sm:mx-0">
-            <img src="src/images/profile-1.png" />
+          <img src="/images/profile-1.png" />
           </div>
 
           <div className="hidden sm:block">
