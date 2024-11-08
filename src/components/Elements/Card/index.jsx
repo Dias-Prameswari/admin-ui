@@ -1,12 +1,12 @@
 import React from "react";
 
-const Card = ({ title, description }) => {
+const Card = ({ title, description, className }) => {
   return (
     <>
       <div className=" text-lg text-gray-02 mb-2">{title}</div>
 
       {/* <div className="mb-8"> */}
-      <div className="bg-white rounded-lg p-8 shadow-xl">{description}</div>
+      <div className={`bg-white rounded-lg p-8 shadow-xl ${className}`}>{description}</div>
       {/* </div> */}
     </>
   );

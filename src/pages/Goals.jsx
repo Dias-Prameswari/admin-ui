@@ -15,9 +15,10 @@ const Goals = () => {
         culpa provident id esse fuga sit."
           />
         </div>
-        <div className="py-7 sm:w-4/5">
+        <div className="py-7 w-2/3">
           <Card
             title=""
+            className="min-h-[210px]"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
         culpa provident id esse fuga sit."
