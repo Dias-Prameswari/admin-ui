@@ -1,59 +1,77 @@
 import React from "react";
-import MainLayout from "../components/Layouts/MainLayout";
 import Card from "../components/Elements/Card";
+import MainLayout from "../components/Layouts/MainLayout";
 
-const Dashboard = () => {
+const Goals = () => {
   return (
-    <MainLayout type="dashboard">
+    <MainLayout type="goals">
       {/* top content start*/}
       <div className="mb-8 sm:flex sm:gap-6">
         <div className="sm:w-1/3">
           <Card
-            title="Overview"
+            title="Goals"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
         culpa provident id esse fuga sit."
           />
         </div>
-        <div className="sm:w-1/3">
+        <div className="py-7 sm:w-4/5">
           <Card
-            title="Overview"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
-        culpa provident id esse fuga sit."
-          />
-        </div>
-        <div className="sm:w-1/3">
-          <Card
-            title="Overview"
+            title=""
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
         culpa provident id esse fuga sit."
           />
         </div>
       </div>
+
       {/* top content end*/}
+
       {/* bottom content start*/}
-      <div className="mb-8 sm:flex sm:gap-6">
-        <div className="sm:w-1/3">
+      <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div>
           <Card
-            title="Overview"
+            title="Expenses Goals by Category"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
         culpa provident id esse fuga sit."
           />
         </div>
-        <div className="sm:w-1/3">
+        <div className="py-7">
           <Card
-            title="Overview"
+            title=""
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
         culpa provident id esse fuga sit."
           />
         </div>
-        <div className="sm:w-1/3">
+        <div className="py-7">
           <Card
-            title="Overview"
+            title=""
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
+        culpa provident id esse fuga sit."
+          />
+        </div>
+        <div>
+          <Card
+            title=""
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
+        culpa provident id esse fuga sit."
+          />
+        </div>
+        <div>
+          <Card
+            title=""
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
+        culpa provident id esse fuga sit."
+          />
+        </div>
+        <div>
+          <Card
+            title=""
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
         culpa provident id esse fuga sit."
@@ -65,4 +83,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Goals;

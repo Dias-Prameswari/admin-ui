@@ -18,31 +18,31 @@ const Navbar = () => {
       icon: <Icon.Balance />,
       label: "Balance",
     },
-    {
+    {//belum ada halamannya 
       id: "transaction",
       link: "/transaction",
       icon: <Icon.Transaction />,
       label: "Transaction",
     },
-    {
+    {//belum ada halamannya 
       id: "bill",
       link: "/bill",
       icon: <Icon.Bill />,
       label: "Bill",
     },
-    {
+    {//tambahan baru
       id: "expenses",
       link: "/expenses",
       icon: <Icon.Expencces />,
       label: "Expenses",
     },
-    {
+    {//tambahan baru 
       id: "goals",
       link: "/goals",
       icon: <Icon.Goals />,
       label: "Goals",
     },
-    {
+    {//belum ada halamannya 
       id: "settings",
       link: "/settings",
       icon: <Icon.Settings />,
@@ -51,7 +51,7 @@ const Navbar = () => {
   ];
 
   const log = [
-    {
+    {//belum ada halamannya 
       id: "logout",
       link: "/logout",
       icon: <Icon.Logout />,
