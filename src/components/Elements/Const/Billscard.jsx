@@ -14,7 +14,7 @@ const BillCards = ({ bills }) => {
               <img className="h-6" src={`/images/${bill.logo}`} alt={`${bill.name} logo`} />
               <span className="font-bold">{bill.name}</span>
               <br />
-              <span className="text-xs">lastt charge - {bill.lastCharge}</span>
+              <span className="text-xs">Last Charge - {bill.lastCharge}</span>
             </div>
           </div>
           <div className="flex place-content-center flex-col">
