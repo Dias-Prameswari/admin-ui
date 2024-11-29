@@ -6,43 +6,43 @@ import Logo from "../Elements/Logo";
 
 const Navbar = () => {
   const menus = [
-    {
+    {//sudah ada halamannya
       id: "overview",
       link: "/",
       icon: <Icon.Overview />,
       label: "Overview",
     },
-    {
+    {//sudah ada halamannya
       id: "balance",
       link: "/balance",
       icon: <Icon.Balance />,
       label: "Balance",
     },
-    {//belum ada halamannya 
+    {//sudah ada halamannya
       id: "transaction",
       link: "/transaction",
       icon: <Icon.Transaction />,
       label: "Transaction",
     },
-    {//belum ada halamannya 
+    {//sudah ada halamannya
       id: "bill",
       link: "/bill",
       icon: <Icon.Bill />,
       label: "Bill",
     },
-    {//tambahan baru
+    {//sudah ada halamannya
       id: "expenses",
       link: "/expenses",
       icon: <Icon.Expencces />,
       label: "Expenses",
     },
-    {//tambahan baru 
+    {//sudah ada halamannya
       id: "goals",
       link: "/goals",
       icon: <Icon.Goals />,
       label: "Goals",
     },
-    {//belum ada halamannya 
+    {//sudah ada halamannya
       id: "settings",
       link: "/settings",
       icon: <Icon.Settings />,

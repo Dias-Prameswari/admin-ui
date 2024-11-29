@@ -1,14 +1,15 @@
 import React from "react";
 
-const Card = ({ title, description, className }) => {
+const Card = ({ title, children, className, variant }) => {
   return (
-    <>
-      <div className=" text-lg text-gray-02 mb-2">{title}</div>
-
-      {/* <div className="mb-8"> */}
-      <div className={`bg-white rounded-lg p-8 shadow-xl ${className}`}>{description}</div>
-      {/* </div> */}
-    </>
+    <div className={`card-container mb-6 ${variant}`}>
+      {/* Title di luar kotak card */}
+      {title && <h2 className="text-lg text-gray-02 mb-4">{title}</h2>}
+      {/* Card container */}
+      <div className={`bg-white rounded-lg p-6 shadow-lg ${className} min-h-[320px]`}>
+        {children}
+      </div>
+    </div>
   );
 };
 

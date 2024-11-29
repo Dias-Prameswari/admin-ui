@@ -9,6 +9,9 @@ import Dashboard from "./pages/Dashboard";
 import Balance from './pages/Balance';
 // import Expenses from './pages/Expenses';
 import Goals from './pages/Goals';
+// import Bill from './pages/Bill';
+// import Transaction from './pages/Transaction';
+// import Settings from './pages/Settings';
 
   // Komponen ProtectedRoute
   // const ProtectedRoute = ({ element }) => {
@@ -61,6 +64,18 @@ const App = () => {
       path: "/goals",
       element: <Goals />,
     },
+    // {
+    //   path: "/bill",
+    //   element: <Bill />,
+    // },
+    // {
+    //   path: "/transaction",
+    //   element: <Transaction />,
+    // },
+    // {
+    //   path: "/settings",
+    //   element: <Settings />,
+    // },
   ]);
 
   return <RouterProvider router={myRouter} />;
