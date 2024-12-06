@@ -4,7 +4,9 @@ import Card from "../components/Elements/Card";
 import CardBill from "../components/Fragments/Dashboard/CardBill";
 import CardExpenseBreakdown from "../components/Fragments/Dashboard/CardExpenseBreakdown";
 import CardTransaction from "../components/Fragments/Dashboard/CardTransaction";
-
+import CardBalance from "../components/Fragments/Dashboard/CardBalance";
+import CardStatistic from "../components/Fragments/Dashboard/CardStatistic";
+import CardGoal from "../components/Fragments/Dashboard/CardGoal";
 // import bills from "../data/Bill";
 // import Billscard from "../components/Elements/Const/Billscard";
 // import ExpensesBreakdowns from "../data/Expenses";
@@ -17,20 +19,25 @@ const Dashboard = () => {
   return (
     <MainLayout type="dashboard">
       {/* top content start*/}
-      <div className="md:grid md:grid-cols-3 md:gap-x-6">
-        <Card title="Total Balance" className="col-span-1" />
-        <Card title="Goals" className="col-span-1" />
+      <div className="grid grid-cols-3 gap-4 h-full">
+        {/* upcoming total balance 🔽🔽 */}
+        <CardBalance />
+        
+        {/* upcoming goals 🔽🔽 */}
+        <CardGoal/>
+
         {/* upcoming bill🔽🔽 */}
         <CardBill />
       </div>
       {/* top content end*/}
       {/* bottom content start*/}
-      <div className="md:grid md:grid-cols-3 md:gap-x-6">
+      <div className="grid grid-cols-3 gap-4 h-full">
         {/* recent transactions🔽🔽 */}
         <CardTransaction />
 
-        <Card variant="md:col-span-2" title="Statistics"></Card>
-
+        {/* recent transactions🔽🔽 */}
+        <CardStatistic />
+        
         {/* expenses break down🔽🔽 */}
         <CardExpenseBreakdown />
       </div>

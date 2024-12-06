@@ -26,7 +26,7 @@ const CardBill = () => {
 
   return (
     <Card title="Upcoming Bill">
-      <div className="h-full flex flex-col justify-around">{billCard}</div>
+      <div className="h-full flex flex-col justify-between">{billCard}</div>
     </Card>
     // desc={
     //     <div className="h-full flex flex-col justify-around">

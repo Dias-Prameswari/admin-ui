@@ -19,7 +19,7 @@ const CardTransaction = () => {
   }
 
   const transactionCard = trxs.map((transaction) => (
-    <div key={transaction.id} className="flex justify-between my-6">
+    <div key={transaction.id} className="flex justify-between my-7">
       <div className="flex">
         <div className="bg-special-bg px-3 rounded-lg flex flex-col place-content-center">
           {transaction.icon}
@@ -44,7 +44,7 @@ const CardTransaction = () => {
 
   return (
     <Card variant="md:col-span-1 md:row-span-2" title="Recent Transaction">
-      <div>
+      <div className="h-full flex flex-col ">
         <div className="mb-4 flex flex-col sm:flex-row">
           {tabs.map((tab) => (
             <button
@@ -61,7 +61,9 @@ const CardTransaction = () => {
             </button>
           ))}
         </div>
+        <div className="h-full overflow-y-auto">
         {transactionCard}
+        </div>
       </div>
     </Card>
     // desc={

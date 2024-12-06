@@ -29,7 +29,9 @@ const CardExpenseBreakdown = () => {
 
   return (
     <Card variant="md:col-span-2" title="Expenses Breakdown">
-      <div className="h-full md:grid md:grid-cols-3">{expenseCard}</div>
+      <div className="h-full overflow-y-auto md:grid md:grid-cols-3">
+        {expenseCard}
+        </div>
     </Card>
     // desc={<div className="h-full md:grid md:grid-cols-3">{expenseCard}</div>}
   );
