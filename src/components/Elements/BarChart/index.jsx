@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { BarChart } from '@mui/x-charts/BarChart';
-import { useContext } from 'react';
+import { useContext } from "react";
 import { ThemeContext } from '../../../context/ThemeContext';
 
 const chartSetting = {

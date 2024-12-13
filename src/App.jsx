@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
@@ -6,9 +6,9 @@ import ForgotPassword from "./components/Fragments/ForgotPassword";
 import ErrorRouter from "./pages/errorRouter";
 // import { useState, useEffect } from 'react';
 import Dashboard from "./pages/Dashboard";
-import Balance from './pages/Balance';
-import Expenses from './pages/Expenses';
-import Goals from './pages/Goals';
+import Balance from "./pages/Balance";
+import Expenses from "./pages/Expenses";
+import Goals from "./pages/Goals";
 
 // import Bill from './pages/Bill';
 // import Transaction from './pages/Transaction';
