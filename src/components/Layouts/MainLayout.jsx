@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Fragments/Header";
 import Navbar from "../Fragments/Navbar";
 import { useContext } from "react";
-import { ThemeContext } from "../../context/themeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const MainLayout = (props) => {
     const { children } = props;

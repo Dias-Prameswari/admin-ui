@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "../Elements/Icon";
 import Logo from "../Elements/Logo";
 import { useContext } from "react";
-import { ThemeContext } from "../../context/themeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Navbar = () => {
   const themes = [
