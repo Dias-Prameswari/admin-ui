@@ -1,11 +1,11 @@
 import React from "react";
 import { useContext, useState } from "react";
-import { useTheme } from "@mui/material/styles";
-import { ThemeContext } from "../../../context/ThemeContext";
-import  MobileStepper  from "@mui/material/MobileStepper";
-import  Button  from "@mui/material/Button";
-import  KeyboardArrowLeft  from "@mui/icons-material/KeyboardArrowLef";
-import  KeyboardArrowRight  from "@mui/icons-material/KeyboardArrowRight";
+import { useTheme } from '@mui/material/styles';
+import { ThemeContext } from '../../../context/ThemeContext';
+import  MobileStepper  from '@mui/material/MobileStepper';
+import  Button  from '@mui/material/Button';
+import  KeyboardArrowLeft  from '@mui/icons-material/KeyboardArrowLeft';
+import  KeyboardArrowRight  from '@mui/icons-material/KeyboardArrowRight';
 
 // Penting: Properti yang diterima di komponen (desc) harus sama dengan nama 
 // yang dikirim dari komponen induk (CardBalance). 
