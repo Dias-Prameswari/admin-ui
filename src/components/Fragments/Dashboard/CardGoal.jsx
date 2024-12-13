@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { goals } from '../../../data/goals';
 import Card from '../../Elements/Card';
 import { Icon } from '../../Elements/Icon';
 import CompositionExample from '../../Elements/GaugeChart';
 
+// membuat tambahan popout input di dashboard untuk bagian goals
+// codenya itu dari chtgpt
+
 const CardGoal = () => {
   const chartValue = goals.presentAmount * 100 / goals.targetAmount;
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [presentAmount, setPresentAmount] = useState(goals.presentAmount); // Current value
+  const [targetAmount, setTargetAmount] = useState(goals.targetAmount); // Target value
+
+  const handleSave = () => {
+    // Handle save logic here (e.g., update the state or send data to the server)
+    setIsPopupOpen(false);
+  };
+
   return (
+    <>
     <Card
     title="Goals">
     <div className="h-full flex flex-col justify-between">
@@ -16,7 +29,9 @@ const CardGoal = () => {
             <span className="text-2xl font-bold me-4 self-center">
               ${goals.presentAmount}
             </span>
-            <div className="p-2 bg-gray-05 rounded-md box-border">
+            <div className="p-2 bg-gray-05 rounded-md box-border"
+            onClick={() => setIsPopupOpen(true)} // Open popup
+            >
               <Icon.Edit />
             </div>
           </div>
@@ -51,7 +66,8 @@ const CardGoal = () => {
             </div>
           </div>
           <div className="ms-4 text-center">
-            <CompositionExample desc={chartValue}/>
+            <CompositionExample desc={chartValue} />
+            {/* bgian atas ini yg diubah */}
             <div className="flex justify-between">
               <span className="text-gray-03">$0</span>
               <span className="font-bold text-2xl">12K</span>
@@ -62,6 +78,53 @@ const CardGoal = () => {
         </div>
       </div>
   </Card>
+
+    {/* Popup */}
+    {isPopupOpen && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-md shadow-md w-96">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">Edit Goals</h2>
+              <button
+                onClick={() => setIsPopupOpen(false)} // Close popup
+                className="text-gray-400 hover:text-gray-600"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-bold mb-2">
+                Target Amount
+              </label>
+              <input
+                type="number"
+                value={targetAmount}
+                onChange={(e) => setTargetAmount(Number(e.target.value))}
+                className="w-full border rounded-md p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-bold mb-2">
+                Present Amount
+              </label>
+              <input
+                type="number"
+                value={presentAmount}
+                onChange={(e) => setPresentAmount(Number(e.target.value))}
+                className="w-full border rounded-md p-2"
+              />
+            </div>
+            <button
+              onClick={handleSave}
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      )}
+
+  </>
   );
 };
 

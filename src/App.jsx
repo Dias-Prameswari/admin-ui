@@ -4,11 +4,12 @@ import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
 import ForgotPassword from "./components/Fragments/ForgotPassword";
 import ErrorRouter from "./pages/errorRouter";
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Dashboard from "./pages/Dashboard";
 import Balance from './pages/Balance';
-// import Expenses from './pages/Expenses';
+import Expenses from './pages/Expenses';
 import Goals from './pages/Goals';
+
 // import Bill from './pages/Bill';
 // import Transaction from './pages/Transaction';
 // import Settings from './pages/Settings';
@@ -56,10 +57,10 @@ const App = () => {
       path: "/balance",
       element: <Balance />,
     },
-    // {
-    //   path: "/expenses",
-    //   element: <Expenses />,
-    // },
+    {
+      path: "/expenses",
+      element: <Expenses />,
+    },
     {
       path: "/goals",
       element: <Goals />,

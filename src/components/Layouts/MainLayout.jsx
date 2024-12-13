@@ -1,12 +1,15 @@
-import React from "react";
+// import React from "react";
 import Header from "../Fragments/Header";
 import Navbar from "../Fragments/Navbar";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/themeContext";
 
 const MainLayout = (props) => {
     const { children } = props;
+    const { theme } = useContext(ThemeContext);
   return (
     // div pembuka 1
-    <div className="flex bg-special-mainBg w-screen min-h-screen max-w-full lg:flex-row flex-col">
+    <div className={`flex bg-special-mainBg w-screen min-h-screen max-w-full ${theme.name}`}>
       {/* navbar start */}
       <Navbar />
       {/* navbar end */}

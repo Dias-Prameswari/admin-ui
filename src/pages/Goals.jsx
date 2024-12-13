@@ -6,23 +6,32 @@ const Goals = () => {
   return (
     <MainLayout type="goals">
       {/* top content start*/}
-      <div className="mb-8 sm:flex sm:gap-6">
-        <div className="sm:w-1/3">
-          <Card
-            title="Goals"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
-        culpa provident id esse fuga sit."
-          />
+      <div className="md:grid md:grid-cols-3 md:gap-x-6">
+        {/* Card pertama */}
+        <div className="md:col-span-1">
+          <Card title="Goals" variant="text-primary">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+            molestias, quae incidunt est corrupti soluta amet quaerat explicabo
+            dignissimos et ea animi rerum saepe culpa provident id esse fuga
+            sit.
+          </Card>
         </div>
-        <div className="py-7 w-2/3">
+
+        {/* Card kedua */}
+        <div className="md:col-span-2 py-11">
           <Card
             title=""
-            className="min-h-[210px]"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
-        culpa provident id esse fuga sit."
-          />
+            variant="text-primary"
+            // className="min-h-[210px]"
+            // description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            // Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe
+            // culpa provident id esse fuga sit."
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+            molestias, quae incidunt est corrupti soluta amet quaerat explicabo
+            dignissimos et ea animi rerum saepe culpa provident id esse fuga
+            sit.
+          </Card>
         </div>
       </div>
 

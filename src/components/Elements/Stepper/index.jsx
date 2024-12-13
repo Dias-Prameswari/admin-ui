@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
-
+import { ThemeContext } from '../../../context/ThemeContext';
 import  MobileStepper  from '@mui/material/MobileStepper';
 import  Button  from '@mui/material/Button';
 import  KeyboardArrowLeft  from '@mui/icons-material/KeyboardArrowLeft';
@@ -11,7 +11,7 @@ import  KeyboardArrowRight  from '@mui/icons-material/KeyboardArrowRight';
 // yang dikirim dari komponen induk (CardBalance). 
 // Properti ini berisi array data yang akan digunakan untuk navigasi 
 // dan menampilkan konten tiap langkah (activeStep).
-
+// stepper itu titik bagian total balance itu 
 const Stepper = (props) => {
     //Mendapatkan properti "desc" yang berisi array data, dengan default [] jika tidak diberikan
     const { desc } = props;
@@ -29,6 +29,8 @@ const Stepper = (props) => {
 
     const dataNum = desc.length;
 
+    const { theme: themeMode } = useContext(ThemeContext);
+
   return (
     <>
     <div>{desc[activeStep]}</div>
@@ -44,7 +46,7 @@ const Stepper = (props) => {
                 backgroundColor: "darkgray",
             },
             "& .MuiMobileStepper-dotActive": {
-                backgroundColor: "#299D91",
+                backgroundColor: themeMode.color,
             } 
         }}
         nextButton={
