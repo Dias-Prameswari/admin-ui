@@ -10,10 +10,14 @@ const Balance = () => {
         <div className="sm:w-1/3">
           <Card
             title="Balance"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
-        culpa provident id esse fuga sit."
-          />
+        //     description="Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        // Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
+        // culpa provident id esse fuga sit."
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+         Sed molestias, quae incidunt est corrupti soluta amet quaerat explicabo dignissimos et ea animi rerum saepe 
+         culpa provident id esse fuga sit."
+          </Card>
         </div>
         <div className="sm:w-1/3">
           <Card
