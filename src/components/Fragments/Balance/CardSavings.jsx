@@ -1,31 +1,46 @@
-import credits from "../../../data/savings";
+import savings from "../../../data/savings";
 import Card from "../../Elements/Card";
+import { Icon } from "../../Elements/Icon";
 
 const CardSavings = () => {
-  // Mapping data credits ke elemen JSX
-  const savingsCard = credits.map((credit) => (
-    <div key={credit.id} className="lg:flex justify-between pt-3 pb-3">
-      <div className="flex">
-        <div className="me-3 px-4 rounded-lg flex place-content-center flex-col">
-          <img className="h-6" src={`/images/${credit.logo}`} alt={credit.title} />
-        </div>
-        <div>
-          <span className="font-bold">{credit.title}</span>
-          <br />
-          <span className="text-xs">Account - {credit.accountNumber}</span>
+  const savingsCard = savings.map((savings) => (
+    <div key={savings.id} className="flex flex-col gap-4">
+      {/* Header */}
+      <div className="flex justify-between items-center pb-2 border-b border-gray-200">
+        <div className="flex items-center  gap-12">
+          <span className="text-gray-400 font-bold">{savings.title}</span>
+          <span className="text-gray-400 font-semibold ml-12">{savings.bankName}</span>
         </div>
       </div>
-      <div className="flex place-content-center flex-col">
-        <span className="p-2 border rounded-lg font-bold text-center">
-          ${credit.balance}
-        </span>
+
+      {/* Account Information */}
+      <div className="">
+        <span className="text-xl font-bold">{savings.accountNumber}</span>
+        <br />
+        <span className="text-gray-500 text-sm">Account Number</span>
+      </div>
+
+      {/* Balance */}
+      <div className="">
+        <span className="text-xl font-bold">${savings.balance}</span>
+        <br />
+        <span className="text-gray-500 text-sm">Total amount</span>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex justify-between items-center mt-12">
+        <button className="bg-white text-primary font-bold">Remove</button>
+        <button className="flex items-center bg-primary text-white rounded-md px-4 py-2">
+        <span className="mr-1">Details</span>
+        <Icon.Arrowkanan />
+        </button>
       </div>
     </div>
   ));
 
   return (
-    <Card >
-      <div className="h-full flex flex-col justify-between">{savingsCard}</div>
+    <Card>
+      <div className="flex flex-col gap-6">{savingsCard}</div>
     </Card>
   );
 };

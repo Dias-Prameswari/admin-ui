@@ -1,10 +1,11 @@
-const IconWrapper = ({ children }) => (
+const IconWrapper = ({ children, className }) => (
   <svg
     width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     {children}
   </svg>
@@ -294,6 +295,18 @@ const ArrowRightIcon = () => (
   </IconWrapper>
 );
 
+const ArrowkananIcon = () => (
+  <IconWrapper className="h-5 w-5 mt-2 ">
+    <path
+      d="M8 3.33301L12.6667 7.99967L8 12.6663"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </IconWrapper>
+);
+
 const ArrowUpRightIcon = () => (
   <IconWrapper>
     <path
@@ -468,6 +481,7 @@ export const Icon = {
   Housing: HousingIcon,
   ArrowDown: ArrowDownIcon,
   ArrowRight: ArrowRightIcon,
+  Arrowkanan: ArrowkananIcon,
   ArrowUpRight: ArrowUpRightIcon,
   ArrowUp: ArrowUpIcon,
   Food: FoodIcon,

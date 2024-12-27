@@ -4,9 +4,7 @@ export const loan = [
         title: "Loan",
         bankName: "City Bank Ltd",
         accountNumber: "363 456 896 6****",
-        accountType: "Loan",
         balance: 25000,
-        logo: "",
     },
 ];
 
