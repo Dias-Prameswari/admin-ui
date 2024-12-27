@@ -1,9 +1,11 @@
 // import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Icon } from "../Elements/Icon";
 import Logo from "../Elements/Logo";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { AuthContext } from "../../context/authContext";
+import axios from "axios";
 
 const Navbar = () => {
   const themes = [
@@ -14,7 +16,31 @@ const Navbar = () => {
     { name: "theme-brown", bgcolor: "bg-[#8B4513]", color: "#8B4513" },
   ];
 
-  const { setTheme} = useContext(ThemeContext);
+  const {  theme, setTheme } = useContext(ThemeContext);
+  const { setIsLoggedIn, setName, name } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const refreshToken = localStorage.getItem("refreshToken");
+
+  const Logout = async () => {
+    try {
+      await axios.get("https://jwt-auth-eight-neon.vercel.app/logout",{
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      });
+      
+      setIsLoggedIn(false);
+      setName("");
+      localStorage.removeItem("refeshToken");
+
+      navigate("/login");
+    } catch (error){
+      alert("Logout failed. Please try again.");
+      console.log(error);
+    }
+  };
+
 
   const menus = [
     { id: "overview", link: "/", icon: <Icon.Overview />, label: "Overview" },
@@ -26,9 +52,9 @@ const Navbar = () => {
     { id: "settings", link: "/settings", icon: <Icon.Settings />, label: "Settings" },
   ];
 
-  const log = [
-    { id: "logout", link: "/logout", icon: <Icon.Logout />, label: "Logout" },
-  ];
+  // const log = [
+  //   { id: "logout", link: "/logout", icon: <Icon.Logout />, label: "Logout" },
+  // ];
 
   return (
     <div className="bg-defaultBlack">
@@ -74,21 +100,16 @@ const Navbar = () => {
 
         {/* Footer Section */}
         <div className="sticky bottom-12">
-          {log.map((item) => (
-            <NavLink
-              to={item.link}
-              key={item.id}
-              className={({ isActive }) =>
-                isActive
-                  ? "flex bg-primary text-white px-4 py-3 rounded-md"
-                  : "flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white"
-              }
-            >
-              <div className="mx-auto sm:mx-0 text-primary">{item.icon}</div>
-              <div className="ms-3 hidden sm:block">{item.label}</div>
-            </NavLink>
-          ))}
-
+        <NavLink
+            className="flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white"
+            onClick={Logout}
+          >
+            <div className="mx-auto sm:mx-0 text-primary">
+              <Icon.Logout />
+            </div>
+            <div className="ms-3 hidden sm:block">Logout</div>
+          </NavLink>
+          
           <div className="border-b my-10 border-b-special-bg"></div>
           <div className="flex justify-between">
             <div className="mx-auto sm:mx-0">
@@ -96,7 +117,7 @@ const Navbar = () => {
             </div>
 
             <div className="hidden sm:block">
-              <div className="text-white font-bold">Username</div>
+              <div className="text-white font-bold">{name}</div>
               <div className="text-sx">View Profile</div>
             </div>
             <div className="hidden sm:block self-center justify-self-end">

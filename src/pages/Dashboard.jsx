@@ -1,6 +1,6 @@
 import React from "react";
 import MainLayout from "../components/Layouts/MainLayout";
-import Card from "../components/Elements/Card";
+// import Card from "../components/Elements/Card";
 import CardBill from "../components/Fragments/Dashboard/CardBill";
 import CardExpenseBreakdown from "../components/Fragments/Dashboard/CardExpenseBreakdown";
 import CardTransaction from "../components/Fragments/Dashboard/CardTransaction";

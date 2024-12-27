@@ -1,15 +1,17 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+// import React, { Children } from "react";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
 import ForgotPassword from "./components/Fragments/ForgotPassword";
 import ErrorRouter from "./pages/errorRouter";
-// import { useState, useEffect } from 'react';
 import Dashboard from "./pages/Dashboard";
 import Balance from "./pages/Balance";
 import Expenses from "./pages/Expenses";
 import Goals from "./pages/Goals";
+import { useContext } from "react";
+import { AuthContext } from "./context/authContext";
 
+// import { useState, useEffect } from 'react';
 // import Bill from './pages/Bill';
 // import Transaction from './pages/Transaction';
 // import Settings from './pages/Settings';
@@ -34,11 +36,17 @@ import Goals from "./pages/Goals";
   // };
 
 const App = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
+  const RequireAuth = ({ children }) => {
+    return isLoggedIn ? children : <Navigate to="/login" />;
+  };
+
   const myRouter = createBrowserRouter([
     {
       path: "/",
       // element: <ProtectedRoute element={<Dashboard />} />,
-      element: <Dashboard />,
+      element: <RequireAuth><Dashboard /></RequireAuth>,
       errorElement: <ErrorRouter />,
     },
     {
@@ -55,27 +63,36 @@ const App = () => {
     },
     {
       path: "/balance",
-      element: <Balance />,
+      element: <RequireAuth><Balance /></RequireAuth>,
     },
     {
       path: "/expenses",
-      element: <Expenses />,
+      element: <RequireAuth><Expenses /></RequireAuth>,
     },
     {
       path: "/goals",
-      element: <Goals />,
+      element: <RequireAuth><Goals /></RequireAuth>,
     },
     // {
     //   path: "/bill",
-    //   element: <Bill />,
+    //   element: 
+    //   <RequireAuth>
+    //     <Bill />
+    //   </RequireAuth>,
     // },
     // {
     //   path: "/transaction",
-    //   element: <Transaction />,
+    //   element: 
+    //   <RequireAuth>
+    //     <Transaction />
+    //   </RequireAuth>,
     // },
     // {
     //   path: "/settings",
-    //   element: <Settings />,
+    //   element: 
+    //   <RequireAuth>
+    //     <Settings />
+    //   </RequireAuth>,
     // },
   ]);
 
