@@ -1,19 +1,22 @@
-import React from 'react';
+import React from "react";
 import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";
 import Button from "../Elements/Button";
 import { useForm } from "react-hook-form";
 // import { data } from 'autoprefixer';
 import axios from "axios";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import CustomizedSnackbars from "../Elements/Snackbar";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
+import { NotifContext } from "../../context/notifContext";
+
 
 const FormSignIn = () => {
-  const [msg, setMsg] = useState();
-  const [open, setOpen] = useState(true);
+  // const [msg, setMsg] = useState();
+  // const [open, setOpen] = useState(true);
+  const { msg, setMsg, open, setOpen, setIsLoading } = useContext(NotifContext);
   const { setIsLoggedIn, setName } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -29,6 +32,7 @@ const FormSignIn = () => {
   // const onFormSubmit = (data) => console.log(data);
   const onErrors = (errors) => console.log(errors);
   const onFormSubmit = async (data) => {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "https://jwt-auth-eight-neon.vercel.app/login",
@@ -37,21 +41,31 @@ const FormSignIn = () => {
           password: data.password,
         }
       );
-  
+
+      setIsLoading(false);
+      setOpen(true);
+      setMsg({ severity: "success", desc: "Login Success" });
+
+
+      setIsLoggedIn(true);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+
       const decode = jwtDecode(response.data.refreshToken);
       // console.log(decode);
 
       // console.log(response);
-      setOpen(true);
-      setMsg({ severity: "success", desc: "Login Success"});
+      // setOpen(true);
+      // setMsg({ severity: "success", desc: "Login Success"});
 
-      localStorage.setItem("refreshToken", response.data.refreshToken);
+      // localStorage.setItem("refreshToken", response.data.refreshToken);
 
-      setIsLoggedIn(true);
+      // setIsLoggedIn(true);
       setName(decode.name);
 
       navigate("/");
     } catch (error) {
+      setIsLoading(false);
+
       if (error.response) {
         // setMsg(error.response.data.msg);
         setOpen(true);
@@ -115,11 +129,8 @@ const FormSignIn = () => {
 
 
             <Button
-            variant={
-              !isValid
-               ?"bg-gray-05 w-full text-white"
-               :"bg-primary w-full text-white"
-            }
+            variant={`${!isValid ?"bg-gray-05" : "bg-primary zoom-in"}
+               w-full text-white`}
             type="submit"
             disabled={!isValid ? "disabled" : ""}
             >
@@ -127,12 +138,12 @@ const FormSignIn = () => {
             </Button>
             {/* <div className="mt-3 text-center text-red-500">{msg}</div> */}
             {msg && (
-              <CustomizedSnackbars
+              <CustomizedSnackbars 
                 severity={msg.severity}
                 message={msg.desc}
                 open={open}
                 setOpen={setOpen}
-              />  
+              />
             )}
           </form>
   );

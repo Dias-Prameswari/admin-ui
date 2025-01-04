@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Icon } from "../Elements/Icon";
 import Logo from "../Elements/Logo";
@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { AuthContext } from "../../context/authContext";
 import axios from "axios";
+import { NotifContext } from "../../context/notifContext";
+// import CustomizedSnackbars from "../Elements/Snackbar";
 
 const Navbar = () => {
   const themes = [
@@ -16,13 +18,16 @@ const Navbar = () => {
     { name: "theme-brown", bgcolor: "bg-[#8B4513]", color: "#8B4513" },
   ];
 
-  const {  theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   const { setIsLoggedIn, setName, name } = useContext(AuthContext);
+  const { setMsg, setOpen, setIsLoading } = useContext(NotifContext);
+  
   const navigate = useNavigate();
 
   const refreshToken = localStorage.getItem("refreshToken");
 
   const Logout = async () => {
+    setIsLoading(true);
     try {
       await axios.get("https://jwt-auth-eight-neon.vercel.app/logout",{
         headers: {
@@ -30,15 +35,34 @@ const Navbar = () => {
         },
       });
       
+      setIsLoading(false);
+      setOpen(true);
+      setMsg({ severity: "success", desc: "Logout Success" });
+
+      console.log("Logout Snackbar:", { severity: "success", desc: "Logout Success" });
+
       setIsLoggedIn(false);
       setName("");
-      localStorage.removeItem("refeshToken");
+      localStorage.removeItem("refreshToken");
 
       navigate("/login");
     } catch (error){
-      alert("Logout failed. Please try again.");
-      console.log(error);
+      setIsLoading(false);
+
+      if (error.response) {
+        setOpen(true);
+        setMsg({ severity: "error", desc: error.response.data.msg });      
+      }
+      // alert("Logout failed. Please try again.");
+      // console.log(error);
     }
+
+    setIsLoggedIn(false);
+    setName("");
+    setIsLoading(false);
+
+    localStorage.removeItem("refreshToken");
+    navigate("/login");
   };
 
 
@@ -72,8 +96,8 @@ const Navbar = () => {
               key={menu.id}
               className={({ isActive }) =>
                 isActive
-                  ? "flex bg-primary text-white px-4 py-3 rounded-md"
-                  : "flex hover:bg-special-bg3 hover:text-white px-4 py-3 rounded-md"
+                  ? "flex bg-primary text-white px-4 py-3 rounded-md zoom-in"
+                  : "flex hover:bg-special-bg3 hover:text-white px-4 py-3 rounded-md zoom-in"
               }
             >
               <div className="mx-auto sm:mx-0">{menu.icon}</div>
@@ -90,7 +114,7 @@ const Navbar = () => {
             {themes.map((t) => (
               <div
                 key={t.name}
-                className={`${t.bgcolor} md:w-6 h-6 rounded-md cursor-pointer mb-2`}
+                className={`${t.bgcolor} md:w-6 h-6 rounded-md cursor-pointer mb-2 zoom-in`}
                 onClick={() => setTheme(t)}
               ></div>
             ))}
@@ -101,7 +125,7 @@ const Navbar = () => {
         {/* Footer Section */}
         <div className="sticky bottom-12">
         <NavLink
-            className="flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white"
+            className="flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white zoom-in"
             onClick={Logout}
           >
             <div className="mx-auto sm:mx-0 text-primary">

@@ -1,9 +1,11 @@
+import React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
 export default function CustomizedSnackbars(props) {
   const { open, setOpen, severity, message } = props;
-
+  console.log("CustomizedSnackbars Props:", { open, severity, message }); // Tambahkan log ini
+  
   return (
     <div>
       <Snackbar

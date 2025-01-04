@@ -1,23 +1,74 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { goals } from '../../../data/goals';
 import Card from '../../Elements/Card';
 import { Icon } from '../../Elements/Icon';
 import CompositionExample from '../../Elements/GaugeChart';
+import axios from "axios";
 
 // membuat tambahan popout input di dashboard untuk bagian goals
 // codenya itu dari chtgpt
 
 const CardGoal = () => {
-  const chartValue = goals.presentAmount * 100 / goals.targetAmount;
+  // const chartValue = goals.presentAmount * 100 / goals.targetAmount;
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [presentAmount, setPresentAmount] = useState(goals.presentAmount); // Current value
-  const [targetAmount, setTargetAmount] = useState(goals.targetAmount); // Target value
+  // const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // const [presentAmount, setPresentAmount] = useState(goals.presentAmount); // Current value
+  // const [targetAmount, setTargetAmount] = useState(goals.targetAmount); // Target value
 
-  const handleSave = () => {
-    // Handle save logic here (e.g., update the state or send data to the server)
-    setIsPopupOpen(false);
-  };
+  // const handleSave = () => {
+  //   // Handle save logic here (e.g., update the state or send data to the server)
+  //   setIsPopupOpen(false);
+  // };
+
+  const [goals, setGoals] = useState ({ presentAmount: 0, targetAmount: 0});
+
+  const value = (goals.presentAmount * 100) / goals.targetAmount;
+
+  const getData = async () => {
+    try {
+      const refreshToken = localStorage.getItem("refreshToken");
+
+      const response = await axios.get(
+        "https://jwt-auth-eight-neon.vercel.app/goals",
+        {
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        }
+      );
+
+      setGoals({
+        presentAmount: response.data.data[0].present_amount,
+        targetAmount: response.data.data[0].target_amount,
+      });
+
+      console.log(response);
+
+    } catch (error) {
+       if (error.response) {
+          if (error.response.status == 401) {
+            setOpen(true);
+            setMsg({
+              severity: "error",
+              desc: "Session Has Expired. Please Login.",
+            });
+
+          setIsLoggedIn(false);
+          setName("");
+
+          localStorage.removeItem("refreshToken");
+          navigate("/login");
+        } else {
+          console.log(error.response);
+      }
+}
+    }
+  }; 
+
+  useEffect(() => {
+    getData();
+  }, []);
+
 
   return (
     <>
@@ -66,7 +117,7 @@ const CardGoal = () => {
             </div>
           </div>
           <div className="ms-4 text-center">
-            <CompositionExample desc={chartValue} />
+            <CompositionExample desc={value} />
             {/* bgian atas ini yg diubah */}
             <div className="flex justify-between">
               <span className="text-gray-03">$0</span>
@@ -80,7 +131,7 @@ const CardGoal = () => {
   </Card>
 
     {/* Popup */}
-    {isPopupOpen && (
+    {/* {isPopupOpen && (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-md shadow-md w-96">
             <div className="flex justify-between items-center mb-4">
@@ -122,7 +173,7 @@ const CardGoal = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
   </>
   );
