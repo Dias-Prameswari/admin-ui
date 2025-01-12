@@ -16,6 +16,7 @@ const Navbar = () => {
     { name: "theme-purple", bgcolor: "bg-[#6A5ACD]", color: "#6A5ACD" },
     { name: "theme-pink", bgcolor: "bg-[#DB7093]", color: "#DB7093" },
     { name: "theme-brown", bgcolor: "bg-[#8B4513]", color: "#8B4513" },
+    // { name: "theme-dark", bgcolor: "bg-[#0C0A14]", color: "#0C0A14" },
   ];
 
   const { theme, setTheme } = useContext(ThemeContext);
@@ -29,48 +30,39 @@ const Navbar = () => {
   const Logout = async () => {
     setIsLoading(true);
     try {
-      await axios.get("https://jwt-auth-eight-neon.vercel.app/logout",{
+      await axios.get("https://jwt-auth-eight-neon.vercel.app/logout", {
         headers: {
           Authorization: `Bearer ${refreshToken}`,
         },
       });
-      
-      setIsLoading(false);
-      setOpen(true);
+  
+      // Tampilkan pesan sukses
       setMsg({ severity: "success", desc: "Logout Success" });
-
-      console.log("Logout Snackbar:", { severity: "success", desc: "Logout Success" });
-
+      setOpen(true);
+    } catch (error) {
+      // Tampilkan pesan error jika logout gagal
+      if (error.response) {
+        setMsg({ severity: "error", desc: error.response.data.msg });
+        setOpen(true);
+      }
+    } finally {
+      // Tetap hapus data pengguna di semua kondisi
+      setIsLoading(false);
       setIsLoggedIn(false);
       setName("");
       localStorage.removeItem("refreshToken");
-
+      localStorage.removeItem("name");
       navigate("/login");
-    } catch (error){
-      setIsLoading(false);
-
-      if (error.response) {
-        setOpen(true);
-        setMsg({ severity: "error", desc: error.response.data.msg });      
-      }
-      // alert("Logout failed. Please try again.");
-      // console.log(error);
     }
-
-    setIsLoggedIn(false);
-    setName("");
-    setIsLoading(false);
-
-    localStorage.removeItem("refreshToken");
-    navigate("/login");
   };
+  
 
 
   const menus = [
     { id: "overview", link: "/", icon: <Icon.Overview />, label: "Overview" },
     { id: "balance", link: "/balance", icon: <Icon.Balance />, label: "Balance" },
     { id: "transaction", link: "/transaction", icon: <Icon.Transaction />, label: "Transaction" },
-    { id: "bill", link: "/bill", icon: <Icon.Bill />, label: "Bill" },
+    { id: "bill", link: "/bills", icon: <Icon.Bill />, label: "Bill" },
     { id: "expenses", link: "/expenses", icon: <Icon.Expencces />, label: "Expenses" },
     { id: "goals", link: "/goals", icon: <Icon.Goals />, label: "Goals" },
     { id: "settings", link: "/settings", icon: <Icon.Settings />, label: "Settings" },

@@ -26,12 +26,12 @@ const chartSetting = {
 
 export default function BarsDataset(props) {
     const { desc } = props;
-
     const { theme } = useContext(ThemeContext);
 
-    desc.series[1].color = theme.color;
+    desc.series[1].color = "var(--color-primary)";
 
     return (
+        <div style={{ height: "290px", width: "100%" }}>
         <BarChart
             dataset={desc.data}
             xAxis={[{ scaleType: 'band', dataKey: desc.dataKey, categoryGapRatio: 0.5 }]}
@@ -44,5 +44,6 @@ export default function BarsDataset(props) {
             }}
             {...chartSetting}
         />
+        </div>
     );
 }

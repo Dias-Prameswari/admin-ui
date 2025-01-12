@@ -19,8 +19,8 @@ describe("User login", () => {
     cy.get("button").contains("Login").click();
 
     cy.get("nav");
-
     cy.get("header");
+    cy.wait(5000);
   });
 
   it("should not allow user to log in with invalid credentials", () => {
@@ -43,5 +43,5 @@ describe("User login", () => {
     cy.get("button").contains("Login").click();
 
     cy.get("div").contains("Wrong Password");
-  });
+  }); 
 });

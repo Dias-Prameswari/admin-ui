@@ -1,7 +1,60 @@
 import bills from "../../../data/bill";
 import Card from "../../Elements/Card";
+import React, { useEffect, useState } from "react";
+import SimpleBackdrop from "../../Elements/Backdrop";
 
 const CardBill = () => {
+  const [isLoading, setIsLoading] = useState(true); // State untuk Loader Animation
+  const [billData, setBillData] = useState([]); // State untuk menyimpan data bills
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true); // Tampilkan Loader
+        // Simulasi fetch data
+        const response = await new Promise((resolve) =>
+          setTimeout(
+            () =>
+              resolve({
+                data: bills, // Gunakan data lokal sementara
+              }),
+            1000
+          )
+        );
+        setBillData(response.data); // Simpan data ke state
+      } catch (error) {
+        console.error("Failed to fetch bills:", error);
+        setBillData([]); // Jika gagal, set data kosong
+      } finally {
+        setIsLoading(false); // Sembunyikan Loader
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <>
+        <SimpleBackdrop isLoading={isLoading} setIsLoading={setIsLoading} />
+        <Card title="Upcoming Bill">
+          <div className="p-4 text-center text-gray-500">Loading...</div>
+        </Card>
+      </>
+    );
+  }
+
+  if (!billData || billData.length === 0) {
+    return (
+      <Card title="Upcoming Bill">
+        <div className="p-4 text-center text-gray-500">
+          No upcoming bills available.
+        </div>
+      </Card>
+    );
+  }
+
+
   const billCard = bills.map((bill) => (
     <div key={bill.id} className="lg:flex justify-between pt-3 pb-3">
       <div className="flex">

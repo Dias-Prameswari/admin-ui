@@ -41,38 +41,33 @@ const FormSignIn = () => {
           password: data.password,
         }
       );
-
-      setIsLoading(false);
-      setOpen(true);
-      setMsg({ severity: "success", desc: "Login Success" });
-
-
+  
+      // Simpan refreshToken dan nama pengguna
+      const refreshToken = response.data.refreshToken;
+      const decode = jwtDecode(refreshToken);
       setIsLoggedIn(true);
-      localStorage.setItem("refreshToken", response.data.refreshToken);
-
-      const decode = jwtDecode(response.data.refreshToken);
-      // console.log(decode);
-
-      // console.log(response);
-      // setOpen(true);
-      // setMsg({ severity: "success", desc: "Login Success"});
-
-      // localStorage.setItem("refreshToken", response.data.refreshToken);
-
-      // setIsLoggedIn(true);
       setName(decode.name);
-
+      localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("name", decode.name);
+  
+      // Tampilkan pesan sukses
+      setMsg({ severity: "success", desc: "Login Success" });
+      setOpen(true);
+      setIsLoading(false);
+  
+      // Arahkan ke halaman utama
       navigate("/");
     } catch (error) {
+      // Tampilkan pesan error
       setIsLoading(false);
-
-      if (error.response) {
-        // setMsg(error.response.data.msg);
-        setOpen(true);
-        setMsg({ severity: "error", desc: error.response.data.msg });
-      }
+      setMsg({
+        severity: "error",
+        desc: error.response?.data?.msg || "Login Failed. Please try again.",
+      });
+      setOpen(true);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit(onFormSubmit, onErrors)}>

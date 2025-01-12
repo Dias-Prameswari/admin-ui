@@ -37,7 +37,6 @@ import {
   
   export default function CompositionExample(props) {
     const { theme } = useContext(ThemeContext);
-
     const { desc } = props;
 
     return (
@@ -49,13 +48,13 @@ import {
         value={desc}
         sx={() => ({
           [`& .value-arc`]: {
-            fill: theme.color,
+            fill: "var(--color-primary)",
           },
         })}
       >
         <GaugeReferenceArc />
         <GaugeValueArc className="value-arc" />
-        <GaugePointer color={theme.color} />
+        <GaugePointer color="var(--color-primary)" />
       </GaugeContainer>
     );
   }

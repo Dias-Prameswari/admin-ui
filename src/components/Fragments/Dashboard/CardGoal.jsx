@@ -20,9 +20,9 @@ const CardGoal = () => {
   //   setIsPopupOpen(false);
   // };
 
-  const [goals, setGoals] = useState ({ presentAmount: 0, targetAmount: 0});
+  const [goalState, setGoals] = useState ({ presentAmount: 0, targetAmount: 0});
 
-  const value = (goals.presentAmount * 100) / goals.targetAmount;
+  const value = (goalState.presentAmount * 100) / goalState.targetAmount;
 
   const getData = async () => {
     try {
@@ -78,7 +78,7 @@ const CardGoal = () => {
         <div className="flex justify-between">
           <div className="flex">
             <span className="text-2xl font-bold me-4 self-center">
-              ${goals.presentAmount}
+              ${goalState.presentAmount}
             </span>
             <div className="p-2 bg-gray-05 rounded-md box-border"
             onClick={() => setIsPopupOpen(true)} // Open popup
@@ -99,7 +99,7 @@ const CardGoal = () => {
                 <span className="text-gray-02">Target Achieved</span>
                 <br />
                 <span className="font-bold text-xl">
-                  ${goals.targetAmount}
+                  ${goalState.targetAmount}
                 </span>
               </div>
             </div>
@@ -111,7 +111,7 @@ const CardGoal = () => {
                 <span className="text-gray-02">This Month Target</span>
                 <br />
                 <span className="font-bold text-xl">
-                  ${goals.presentAmount}
+                  ${goalState.presentAmount}
                 </span>
               </div>
             </div>

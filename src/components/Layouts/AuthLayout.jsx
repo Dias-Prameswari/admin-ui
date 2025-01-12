@@ -6,15 +6,20 @@ import { NotifContext } from "../../context/notifContext";
 import SimpleBackdrop from "../Elements/Backdrop";
 import CustomizedSnackbars from "../Elements/Snackbar";
 import * as motion from "motion/react-client";
+import ThemeToggle from "../Elements/Toggle/ThemeToggle";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const AuthLayout = (props) => {
   const { children, type } = props;
   const { msg, open, setOpen, isLoading, setIsLoading } = 
   useContext(NotifContext);
 
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <div className="flex justify-center min-h-screen items-center bg-special-mainBg">
+    <div className="flex justify-center min-h-screen items-center bg-special-mainBg"
+    style={{ backgroundColor: theme.backgroundColor }}
+    >
       {isLoading && (
           <SimpleBackdrop isLoading={isLoading} setIsLoading={setIsLoading} />
         )}
@@ -45,6 +50,11 @@ const AuthLayout = (props) => {
         {children} 
         </div>
         {/* form end */}
+
+        {/* Tambahkan ThemeToggle di sini */}
+        <div className="flex justify-center my-4">
+          <ThemeToggle />
+        </div>
 
         {/* teks start */}
         <div className="my-9 px-7 flex justify-center text-xs text-gray-03 items-center flex-col static">
@@ -136,7 +146,6 @@ const AuthLayout = (props) => {
           )}
         </div>
         {/* link end */}
-
 
       </motion.div>
       {/* container end */}

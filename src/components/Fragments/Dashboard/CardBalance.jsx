@@ -10,7 +10,7 @@ const CardBalance = () => {
     const { theme } = useContext(ThemeContext);
 
     const balanceCard = accounts.map((account) => (
-        <div key={account.id} className={`p-2 ${theme.name}`}>
+        <div key={account.id} className="p-2 card">
             <div className="flex justify-between">
                 <div className="text-2xl font-bold">${account.balance}</div>
                 <div>

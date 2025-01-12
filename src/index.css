@@ -13,6 +13,9 @@
     :root {
         /* default primary color*/
       --color-primary: #299D91;
+      /* --color-background: #ffffff;
+      --color-text: #0C0A14;
+      --color-card: #f5f5f5; */
     }
   }
   
@@ -32,6 +35,64 @@
     --color-primary: #8B4513;
   }
 
+  .theme-dark {
+    --color-primary: #299d91; 
+    background-color: #191919;
+    /* --color-background: #0C0A14;
+    --color-text: #ffffff; */
+  }
+  
+  @layer base {
+    .card {
+      @apply bg-white text-black ; /* Atur latar belakang putih */
+    }
+  }
+  
   .zoom-in {
     @apply duration-500 hover:translate-y-1 hover:scale-110;
   }
+
+  /* General Styles */
+  /* body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .card {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border: 1px solid var(--color-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+   */
+  
+  /* .theme-green .logo {
+    color: white;
+  } */
+
+  /* atau warna lain sesuai tema gelap */
+  /* .theme-dark .logo {
+      color: #ffffff; 
+  } */
+
+  /* .theme-dark body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .theme-dark .card {
+    background-color: var(--card-background);
+    color: var(--text-color);
+  } */
+
+  /* body, .card, .navbar, .btn-login {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  } */
+  
